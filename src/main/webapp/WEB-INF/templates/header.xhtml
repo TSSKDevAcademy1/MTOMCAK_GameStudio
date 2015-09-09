@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+	<ui:composition>
+		<h:link outcome="index.xhtml">
+			<img src="resources/images/background/gamers.png" />
+		</h:link>
+		<h:panelGrid columns="3" columnClasses="titleCell">
+			<h:form action="index.html">
+				<h:panelGrid id="grid" >
+
+					<p:outputLabel for="name" value="User name:"
+						style="font-weight:bold" />
+					<p:inputText id="name" required="true" value="#{newUser.name}">
+						<f:validateLength minimum="5" maximum="10" />
+					</p:inputText>
+					<p:message for="name" />
+
+					<p:outputLabel for="name" value="Password:"
+						style="font-weight:bold" />
+					<p:password id="password" required="true" value="#{newUser.passwd}">
+						<f:validateLength minimum="5" maximum="10" />
+					</p:password>
+					<p:message for="password" />
+
+					<p:commandButton id="submitButton" value="Sign in" update="grid"
+						action="#{userController.login()}" />
+				</h:panelGrid>
+				<h:outputLabel value="#{newUser.name}" />
+			</h:form>
+		</h:panelGrid>
+		
+		<h:form>
+		<h:panelGrid id="grid" columns="3" cellpadding="5">
+			<p:outputLabel value="Birth day:" style="font-weight:bold" />
+			<p:calendar id="date" value="#{newUser.birthDay}" />
+			<p:message for="date" errorClass="incorrect" />
+
+			<p:outputLabel for="name" value="User name:" style="font-weight:bold" />
+			<p:inputText id="name" required="true" value="#{newUser.name}">
+				<f:validateLength minimum="5" maximum="10" />
+			</p:inputText>
+			<p:message for="name" />
+
+			<p:outputLabel for="name" value="Password:" style="font-weight:bold" />
+			<p:password id="password" required="true" value="#{newUser.passwd}">
+				<f:validateLength minimum="5" maximum="10" />
+			</p:password>
+			<p:message for="password" />
+
+			<p:outputLabel for="age" value="Age:" style="font-weight:bold" />
+			<p:inputText id="age" required="true" value="#{newUser.age}">
+				<f:validateLength minimum="0" maximum="150" />
+			</p:inputText>
+			<p:message for="age" />
+
+			<p:outputLabel for="country" value="Contry:" style="font-weight:bold" />
+			<p:selectOneMenu id="country" value="#{newUser.country}" effect="fold"
+				editable="true">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems value="#{countryRepository.countries}" />
+			</p:selectOneMenu>
+			<p:message for="country" />
+
+			<p:commandButton id="submitButton" value="Sign up" update="grid"  action="#{userController.register()}"/>
+		</h:panelGrid>
+	</h:form>
+	</ui:composition>
+</body>
+</html>

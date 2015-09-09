@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Index</title>
+<style>
+#label{style="text-align:center"; font-weight:bolder;color: red;}
+</style>
+</head>
+<h:body>
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="content">
+			<h:panelGrid columns="3" columnClasses="titleCell" cellpadding="10" cellspacing="20" style="margin: 0 auto; text-align:center">
+				<h:link outcome="mines.xhtml">
+					<img src="resources/images/background/mine.jpg" width="200"
+						height="200" />
+				</h:link>
+				<h:link outcome="nTiles.xhtml">
+					<img src="resources/images/background/15puzzle.png" width="200"
+						height="200" />
+				</h:link>
+				<h:link outcome="greeting.xhtml">
+					<img src="resources/images/background/GuessMyNumber.png"
+						width="200" height="200" />
+				</h:link>
+				
+				<h:outputLabel id="label" for="name" value="Minesweeper"/>
+				<h:outputLabel for="name" value="15 puzzle"/>
+				<h:outputLabel for="name" value="Guess number"/>
+				
+			</h:panelGrid>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
